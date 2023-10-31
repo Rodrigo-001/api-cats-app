@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background: rgb(70, 142, 236); */
+            /* imagem deve preencher toda tela  */
+            background: url("https://i.pinimg.com/originals/c8/62/ef/c862efc669355c58b2853a03f448d0ff.jpg");
+            font: normal 15pt Arial;
+            text-align: center;
+            color: #fff;
+
+        }
+
+        body,
+        header,
+        main,
+        footer,
+        form {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        img {
+            border-radius: 999px;
+        }
+
+        form,
+        h1 {
+            background: rgba(248, 179, 50, 0.775);
+            border-radius: 6px;
+            gap: 10px;
+            padding: 4px 8px;
+
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        footer {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Meus Gatos</h1>
+    </header>
+    <main>
+        <ul>
+            {% for gato in gatos %}
+            <li>
+                {{ gato['nome'] }}
+                <img src="{{ gato['url'] }}" width="200px" height="200px">
+            </li>
+            {% endfor %}
+        </ul>
+        <form method="POST" action="/adicionar_gato">
+            <label for="gato">Adicionar novo gatinho</label>
+            <input placeholder="Digite nome" type="text" name="gato" required>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; Autor: Rodrigo Camargo</p>
+    </footer>
+
+</body>
+
+</html>
