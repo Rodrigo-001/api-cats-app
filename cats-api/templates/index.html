@@ -62,28 +62,68 @@
 
         footer {
             font-style: italic;
+            font-size: 16px;
+        }
+        button {
+            border: none;
+            /* background: none; */
+            background-color: #ffffffc8;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 4px 0px;
+        }
+        .mostrar-gatos button{
+            background-color: #ffffffc8;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 0 4px;
+            color: black;
+            height: 100%;            
+        }
+        .mostrar-gatos{
+            background: none;
+        }
+        button:hover{
+            background-color: rgba(248, 179, 50, 0.775);
+            box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.252);
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Meus Gatos</h1>
+        <h1>Minha coleção de Gatos</h1>
     </header>
     <main>
         <ul>
-            {% for gato in gatos %}
-            <li>
-                {{ gato['nome'] }}
-                <img src="{{ gato['url'] }}" width="200px" height="200px">
-            </li>
+            <!-- loop para percorrer matriz de dicionarios  -->
+            {% for gato in gatos %}            
+                <li>
+                    {{ gato['nome'] }}
+                    <img src="{{ gato['url'] }}" width="200px" height="200px">
+                </li>
             {% endfor %}
         </ul>
         <form method="POST" action="/adicionar_gato">
-            <label for="gato">Adicionar novo gatinho</label>
+            <label for="gato">Adicionar novo gatinho à coleção</label>
             <input placeholder="Digite nome" type="text" name="gato" required>
-            <button type="submit">Enviar</button>
+            <button class="enviar" type="submit">
+                <img src="https://static.vecteezy.com/system/resources/previews/021/013/501/non_2x/dog-paw-icon-illustration-of-an-dog-paw-icon-in-dark-color-and-transparent-background-free-png.png" width="50px" alt="botão pata de gato">
+            </button>       
         </form>
+        <!-- butão de mostrar todos os gatos -->
+        <form class="mostrar-gatos" method="POST" action="/buscar_no_banco">
+            <button  type="submit">
+                Ver todos
+                <img src="https://cdn-icons-png.flaticon.com/512/98/98479.png" alt="botão olho de gato" width="30px">
+            </button>
+        </form>
+
     </main>
     <footer>
         <p>&copy; Autor: Rodrigo Camargo</p>
